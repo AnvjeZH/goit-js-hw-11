@@ -1,18 +1,19 @@
 const API = '37188095-ba760fd787fe26f9993fba281';
 const BASE_URL = 'https://pixabay.com/api/';
 
-export function fetchQuery(q) {
+export function fetchQuery(q, page) {
     const options = new URLSearchParams({ key: API, 
-        q: 'white+tiger',
+        q,
         image_type: 'photo',
         orientation:'horizontal',
-        safesearch: true
+        safesearch: true,
+        page,
+        per_page: 40
     });
     return fetch(`${BASE_URL}?${options}`).then((response) => {
         if(!response.ok) {
             throw new Error(response.status)
         }
-        console.log(response)
         return response.json()
     })
     .catch((error) => console.log(error))
