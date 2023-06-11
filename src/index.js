@@ -65,7 +65,7 @@ form.addEventListener('submit', onSearchImages);
 
 function onSearchImages(event) {
   event.preventDefault();
-  inputValue = event.target.elements.searchQuery.value;
+  const inputValue = event.target.elements.searchQuery.value;
   if (!inputValue.trim()) {
     showNotification('Please enter your query in the search field');
     return;
